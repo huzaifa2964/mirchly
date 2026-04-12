@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #f6f6f6;
+  --accent: #ff4d00;
+  --secondary: #ffd700;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sora);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-display {
+  font-family: var(--font-cormorant), Georgia, serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sora), sans-serif;
+  background-image:
+    radial-gradient(circle at 8% 20%, rgba(255, 77, 0, 0.14), transparent 32%),
+    radial-gradient(circle at 92% 84%, rgba(255, 215, 0, 0.09), transparent 36%);
+}
+
+.shimmer-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-btn::after {
+  content: "";
+  position: absolute;
+  inset: -120% -100%;
+  background: linear-gradient(120deg, transparent 35%, rgba(255, 255, 255, 0.65) 50%, transparent 65%);
+  transform: translateX(-110%) rotate(12deg);
+  animation: shimmer 2.5s linear infinite;
+}
+
+.marquee-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  min-width: max-content;
+  animation: marquee 23s linear infinite;
+}
+
+@keyframes shimmer {
+  to {
+    transform: translateX(210%) rotate(12deg);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
