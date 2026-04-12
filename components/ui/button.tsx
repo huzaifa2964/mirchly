@@ -14,10 +14,6 @@ const buttonVariants = cva(
         ghost: "border border-white/10 bg-white/5 text-white hover:bg-white/10",
         outline: "border border-white/20 bg-transparent text-white hover:bg-white/5",
       },
-      asChild: {
-        true: "",
-        false: "",
-      },
       size: {
         default: "h-11 px-6",
         sm: "h-9 px-4",
@@ -34,8 +30,9 @@ const buttonVariants = cva(
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    React.ButtonHTMLAttributes<HTMLAnchorElement>,
-    VariantProps<typeof buttonVariants> {}
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
