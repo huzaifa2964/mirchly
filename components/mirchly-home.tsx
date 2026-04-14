@@ -720,7 +720,7 @@ export function MirchlyHome() {
                   meals: 6,
                   price: "$70",
                   unit: "/week",
-                  copy: "6 meals per week, mixed dishes",
+                  copy: "Frozen, readily available at your home for a whole week with best quality",
                   icon: Leaf,
                 },
                 {
@@ -728,7 +728,7 @@ export function MirchlyHome() {
                   meals: 12,
                   price: "$130",
                   unit: "/week",
-                  copy: "12 meals per week, mixed dishes",
+                  copy: "Two times a day, frozen meals available at your doorstep so you don't have to worry about your meals anymore",
                   icon: Wheat,
                 },
               ] : menuFilter === "non-veg" ? [
@@ -737,7 +737,7 @@ export function MirchlyHome() {
                   meals: 6,
                   price: "$90",
                   unit: "/week",
-                  copy: "6 meals per week, protein-rich non-veg",
+                  copy: "Frozen, readily available at your home for a whole week with best quality",
                   icon: Dumbbell,
                 },
                 {
@@ -745,7 +745,7 @@ export function MirchlyHome() {
                   meals: 12,
                   price: "$170",
                   unit: "/week",
-                  copy: "12 meals per week, protein-rich non-veg",
+                  copy: "Two times a day, frozen meals available at your doorstep so you don't have to worry about your meals anymore",
                   icon: Wheat,
                 },
               ] : [
@@ -754,7 +754,7 @@ export function MirchlyHome() {
                   meals: 6,
                   price: "$53",
                   unit: "/week",
-                  copy: "6 meals per week, fresh vegetables",
+                  copy: "Frozen, readily available at your home for a whole week with best quality",
                   icon: Leaf,
                 },
                 {
@@ -762,7 +762,7 @@ export function MirchlyHome() {
                   meals: 12,
                   price: "$90",
                   unit: "/week",
-                  copy: "12 meals per week, fresh vegetables",
+                  copy: "Two times a day, frozen meals available at your doorstep so you don't have to worry about your meals anymore",
                   icon: Wheat,
                 },
               ]),
