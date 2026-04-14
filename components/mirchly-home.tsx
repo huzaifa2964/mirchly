@@ -40,6 +40,7 @@ import { Switch } from "@/components/ui/switch";
 type Meal = {
   name: string;
   subtitle: string;
+  dishType: "mixed" | "veg" | "non-veg";
   spice: "Mild" | "Medium" | "Hot";
   protein: number;
   carbs: number;
@@ -50,110 +51,191 @@ type Meal = {
 
 const meals: Meal[] = [
   {
-    name: "Nawab Chicken Biryani",
-    subtitle: "Slow-cooked saffron rice with smoked chicken",
+    name: "Chicken Karahi",
+    subtitle: "Wok-fired karahi with fresh tomato masala and ginger finish",
+    dishType: "mixed",
     spice: "Medium",
-    protein: 34,
-    carbs: 42,
-    fats: 14,
-    image:
-      "https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?auto=format&fit=crop&w=1400&q=80",
-    ingredients: ["Basmati Rice", "Free-Range Chicken", "Saffron", "Brown Onion", "Mint"],
+    protein: 36,
+    carbs: 13,
+    fats: 18,
+    image: "/dishes/chicken-karahi.jpg",
+    ingredients: ["Chicken", "Tomato", "Ginger", "Green Chili", "Coriander"],
   },
   {
-    name: "Hyderabadi Gosht Salan",
-    subtitle: "Bold pepper gravy and lamb shoulder",
+    name: "Chicken Biryani or Chicken Pulao",
+    subtitle: "Fragrant long-grain rice with tender chicken and aromatic whole spices",
+    dishType: "mixed",
+    spice: "Hot",
+    protein: 34,
+    carbs: 45,
+    fats: 15,
+    image: "/dishes/chicken-biryani.jpg",
+    ingredients: ["Basmati Rice", "Chicken", "Saffron", "Brown Onion", "Mint"],
+  },
+  {
+    name: "Lahori Channay",
+    subtitle: "Classic Lahori chickpeas slow-simmered for rich street-style flavor",
+    dishType: "mixed",
+    spice: "Medium",
+    protein: 14,
+    carbs: 34,
+    fats: 9,
+    image: "/dishes/lahori-channay.jpg",
+    ingredients: ["Chickpeas", "Onion", "Tomato", "Black Cardamom", "Coriander"],
+  },
+  {
+    name: "Mix Vegetable",
+    subtitle: "Seasonal vegetables in a balanced house masala gravy",
+    dishType: "mixed",
+    spice: "Mild",
+    protein: 10,
+    carbs: 20,
+    fats: 8,
+    image: "/dishes/mix-vegetable.jpg",
+    ingredients: ["Cauliflower", "Carrot", "Peas", "Beans", "Tomato Gravy"],
+  },
+  {
+    name: "Pakora Curry w Boiled Rice",
+    subtitle: "Soft pakoras in yogurt curry paired with steamed boiled rice",
+    dishType: "mixed",
+    spice: "Medium",
+    protein: 12,
+    carbs: 39,
+    fats: 12,
+    image: "/dishes/pakora-curry-rice.jpg",
+    ingredients: ["Besan Pakora", "Yogurt", "Turmeric", "Curry Leaves", "Rice"],
+  },
+  {
+    name: "Daal Chawal",
+    subtitle: "Comfort lentils and rice with a desi ghee tadka finish",
+    dishType: "mixed",
+    spice: "Mild",
+    protein: 13,
+    carbs: 41,
+    fats: 8,
+    image: "/dishes/daal-chawal.jpg",
+    ingredients: ["Lentils", "Rice", "Garlic", "Cumin", "Ghee"],
+  },
+  {
+    name: "Charsi Karahi",
+    subtitle: "Peshawari charsi-style karahi with cracked pepper and bold heat",
+    dishType: "non-veg",
     spice: "Hot",
     protein: 37,
-    carbs: 19,
-    fats: 21,
-    image:
-      "https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=1400&q=80",
-    ingredients: ["Lamb Shoulder", "Tamarind", "Roasted Peanut", "Sesame", "Dry Chili"],
-  },
-  {
-    name: "Royal Paneer Makhani",
-    subtitle: "Silky tomato cashew reduction",
-    spice: "Mild",
-    protein: 24,
-    carbs: 17,
-    fats: 18,
-    image:
-      "https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?auto=format&fit=crop&w=1400&q=80",
-    ingredients: ["Paneer", "Tomato", "Cashew", "Kasuri Methi", "Ghee"],
-  },
-  {
-    name: "Kashmiri Chicken Yakhni",
-    subtitle: "Yogurt fennel broth and aromatic herbs",
-    spice: "Mild",
-    protein: 31,
-    carbs: 11,
-    fats: 13,
-    image:
-      "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=1400&q=80",
-    ingredients: ["Chicken Thigh", "Greek Yogurt", "Fennel", "Cardamom", "Dill"],
-  },
-  {
-    name: "Karachi Beef Nihari",
-    subtitle: "Overnight braised marrow-rich stew",
-    spice: "Medium",
-    protein: 39,
-    carbs: 16,
-    fats: 24,
-    image:
-      "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=1400&q=80",
-    ingredients: ["Grass-Fed Beef", "Bone Marrow", "Ginger", "Whole Spices", "Lemon"],
-  },
-  {
-    name: "Tandoori Salmon Roast",
-    subtitle: "Citrus-brined omega-rich fillet",
-    spice: "Medium",
-    protein: 33,
-    carbs: 9,
-    fats: 15,
-    image:
-      "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1400&q=80",
-    ingredients: ["Atlantic Salmon", "Yogurt", "Garlic", "Smoked Paprika", "Lime"],
+    carbs: 10,
+    fats: 20,
+    image: "/dishes/charsi-karahi.jpg",
+    ingredients: ["Chicken", "Tomato", "Black Pepper", "Green Chili", "Coriander"],
   },
   {
     name: "Chicken Karahi",
-    subtitle: "Wok-seared tomatoes, ginger, and green chili",
-    spice: "Hot",
-    protein: 36,
-    carbs: 12,
-    fats: 19,
-    image: "/dishes/chicken-karahi.jpg",
-    ingredients: ["Chicken Thigh", "Tomato", "Ginger", "Green Chili", "Coriander"],
-  },
-  {
-    name: "Smoky BBQ Chicken",
-    subtitle: "Char-grilled kebab-style chicken with masala glaze",
-    spice: "Medium",
-    protein: 38,
-    carbs: 14,
-    fats: 17,
-    image: "/dishes/smoky-bbq-chicken.jpg",
-    ingredients: ["Chicken Breast", "Yogurt", "Paprika", "Lemon", "Garlic"],
-  },
-  {
-    name: "Dal Tarka",
-    subtitle: "Golden lentils with garlic tempering and ghee",
-    spice: "Mild",
-    protein: 22,
-    carbs: 30,
-    fats: 10,
-    image: "/dishes/dal-tarka.jpg",
-    ingredients: ["Yellow Lentils", "Garlic", "Cumin", "Ghee", "Cilantro"],
-  },
-  {
-    name: "Seekh Kebab Box",
-    subtitle: "Tender spiced mince skewers with herb chutney",
+    subtitle: "Restaurant classic chicken karahi finished with ginger juliennes",
+    dishType: "non-veg",
     spice: "Medium",
     protein: 35,
-    carbs: 10,
+    carbs: 11,
     fats: 18,
-    image: "/dishes/seekh-kebab-box.jpg",
-    ingredients: ["Beef Mince", "Onion", "Mint", "Black Pepper", "Chili Flakes"],
+    image: "/dishes/chicken-karahi.jpg",
+    ingredients: ["Chicken", "Tomato", "Ginger", "Garlic", "Coriander"],
+  },
+  {
+    name: "Chicken Biryani",
+    subtitle: "Layered dum biryani with caramelized onions and saffron aroma",
+    dishType: "non-veg",
+    spice: "Medium",
+    protein: 33,
+    carbs: 44,
+    fats: 14,
+    image: "/dishes/chicken-biryani.jpg",
+    ingredients: ["Basmati Rice", "Chicken", "Brown Onion", "Saffron", "Mint"],
+  },
+  {
+    name: "Chicken Qeema",
+    subtitle: "Fine minced chicken masala with peas and warm whole spices",
+    dishType: "non-veg",
+    spice: "Medium",
+    protein: 34,
+    carbs: 12,
+    fats: 17,
+    image: "/dishes/chicken-qeema.jpg",
+    ingredients: ["Minced Chicken", "Onion", "Peas", "Cumin", "Black Pepper"],
+  },
+  {
+    name: "Chicken Haleem",
+    subtitle: "Silky slow-cooked haleem with chicken, wheat, and lentils",
+    dishType: "non-veg",
+    spice: "Mild",
+    protein: 29,
+    carbs: 28,
+    fats: 11,
+    image: "/dishes/chicken-haleem.jpg",
+    ingredients: ["Chicken", "Wheat", "Lentils", "Fried Onion", "Garam Masala"],
+  },
+  {
+    name: "Daal Chawal",
+    subtitle: "Balanced lentil and rice platter with fragrant tadka",
+    dishType: "veg",
+    spice: "Mild",
+    protein: 13,
+    carbs: 41,
+    fats: 8,
+    image: "/dishes/daal-chawal.jpg",
+    ingredients: ["Masoor Daal", "Steamed Rice", "Garlic", "Cumin", "Ghee"],
+  },
+  {
+    name: "Cholay",
+    subtitle: "Robust chickpeas in authentic Punjabi-style cholay masala",
+    dishType: "veg",
+    spice: "Medium",
+    protein: 14,
+    carbs: 33,
+    fats: 9,
+    image: "/dishes/cholay.jpg",
+    ingredients: ["Chickpeas", "Onion", "Tomato", "Tea Masala", "Coriander"],
+  },
+  {
+    name: "Mix Vegetables",
+    subtitle: "Chef-composed vegetable medley in a lighter home-style gravy",
+    dishType: "veg",
+    spice: "Mild",
+    protein: 9,
+    carbs: 21,
+    fats: 8,
+    image: "/dishes/mix-vegetable.jpg",
+    ingredients: ["Cauliflower", "Carrot", "Peas", "Beans", "Tomato Gravy"],
+  },
+  {
+    name: "Shahi Daal",
+    subtitle: "Creamy royal lentils with a butter-ghee finish",
+    dishType: "veg",
+    spice: "Mild",
+    protein: 15,
+    carbs: 29,
+    fats: 11,
+    image: "/dishes/shahi-daal.jpg",
+    ingredients: ["Whole Lentils", "Butter", "Cream", "Tomato", "Kasuri Methi"],
+  },
+  {
+    name: "Aalo Masala",
+    subtitle: "Soft potatoes tossed in dry masala and fresh herbs",
+    dishType: "veg",
+    spice: "Medium",
+    protein: 8,
+    carbs: 26,
+    fats: 9,
+    image: "/dishes/aalo-masala.jpg",
+    ingredients: ["Potato", "Cumin", "Turmeric", "Green Chili", "Coriander"],
+  },
+  {
+    name: "Pulao",
+    subtitle: "Light aromatic rice with a subtle whole-spice profile",
+    dishType: "veg",
+    spice: "Mild",
+    protein: 7,
+    carbs: 43,
+    fats: 6,
+    image: "/dishes/pulao.jpg",
+    ingredients: ["Basmati Rice", "Peas", "Whole Spices", "Onion", "Mint"],
   },
 ];
 
@@ -215,12 +297,12 @@ const cateringFlow = [
 
 export function MirchlyHome() {
   const [activeMedia, setActiveMedia] = useState(0);
-  const [billingMonthly, setBillingMonthly] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [cursor, setCursor] = useState({ x: 250, y: 300 });
   const [dragWidth, setDragWidth] = useState(0);
   const [isDraggingMeals, setIsDraggingMeals] = useState(false);
   const [isMealsHovered, setIsMealsHovered] = useState(false);
+  const [menuFilter, setMenuFilter] = useState<"mixed" | "veg" | "non-veg">("mixed");
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const carouselRef = useRef<HTMLDivElement | null>(null);
@@ -232,6 +314,9 @@ export function MirchlyHome() {
 
   const marqueeCities = useMemo(() => [...cities, ...cities], []);
   const topMeals = meals.slice(0, 5);
+  const filteredMeals = useMemo(() => {
+    return meals.filter((meal) => meal.dishType === menuFilter);
+  }, [menuFilter]);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -431,8 +516,8 @@ export function MirchlyHome() {
               onDragEnd={() => setIsDraggingMeals(false)}
               className="flex cursor-grab gap-5 active:cursor-grabbing"
             >
-              {topMeals.map((meal) => (
-                <Card key={meal.name} className="h-[340px] min-w-[280px] max-w-[280px] overflow-hidden">
+              {topMeals.map((meal, index) => (
+                <Card key={`${meal.name}-${index}`} className="h-[340px] min-w-[280px] max-w-[280px] overflow-hidden">
                   <div className="relative h-44 w-full">
                     <Image src={meal.image} alt={meal.name} fill className="object-cover" sizes="280px" />
                   </div>
@@ -455,11 +540,31 @@ export function MirchlyHome() {
             <div>
               <h2 className="mt-4 font-display text-4xl text-white">Pick Your Signature Stack</h2>
             </div>
+            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] p-1">
+              {[
+                { label: "Mixed", value: "mixed" as const },
+                { label: "Veg", value: "veg" as const },
+                { label: "Non-Veg", value: "non-veg" as const },
+              ].map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setMenuFilter(option.value)}
+                  className={`rounded-full px-4 py-2 text-xs tracking-[0.12em] transition ${
+                    menuFilter === option.value
+                      ? "bg-[#FF4D00] text-black"
+                      : "text-white/75 hover:bg-white/10"
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {meals.map((meal, index) => (
-              <Sheet key={meal.name}>
+            {filteredMeals.map((meal, index) => (
+              <Sheet key={`${meal.name}-${meal.dishType}-${index}`}>
                 <SheetTrigger asChild>
                   <motion.button
                     initial={{ opacity: 0, y: 30 }}
@@ -596,46 +701,71 @@ export function MirchlyHome() {
 
           <div className="flex flex-wrap items-center justify-between gap-6">
             <div>
-              <h2 className="mt-4 font-display text-4xl text-white">Choose Your Ritual</h2>
-              <p className="mt-2 max-w-xl text-white/65">Switch your cadence anytime. Weekly for flexibility, monthly for best value.</p>
-            </div>
-
-            <div className="flex items-center gap-3 rounded-full border border-white/10 bg-black/35 px-4 py-3">
-              <span className={`text-sm transition ${billingMonthly ? "text-white/60" : "text-white"}`}>Weekly</span>
-              <Switch checked={billingMonthly} onCheckedChange={setBillingMonthly} />
-              <span className={`text-sm transition ${billingMonthly ? "text-white" : "text-white/60"}`}>Monthly</span>
+              <h2 className="mt-4 font-display text-4xl text-white">Choose Your Plan</h2>
+              <p className="mt-2 max-w-xl text-white/65">Select from our {menuFilter === "mixed" ? "Mixed" : menuFilter === "non-veg" ? "Non-Veg" : "Veg"} category. Pick your preferred weekly meal count.</p>
             </div>
           </div>
 
           <motion.div
-            key={billingMonthly ? "monthly" : "weekly"}
+            key={menuFilter}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
-            className="mt-8 grid gap-5 md:grid-cols-3"
+            className="mt-8 grid gap-5 md:grid-cols-2"
           >
             {[
-              {
-                title: "Starter",
-                price: billingMonthly ? "$209" : "$59",
-                unit: billingMonthly ? "/month" : "/week",
-                copy: "5 meals, curated variety",
-                icon: Leaf,
-              },
-              {
-                title: "Performance",
-                price: billingMonthly ? "$319" : "$89",
-                unit: billingMonthly ? "/month" : "/week",
-                copy: "8 meals, high-protein stack",
-                icon: Dumbbell,
-              },
-              {
-                title: "Family Feast",
-                price: billingMonthly ? "$419" : "$119",
-                unit: billingMonthly ? "/month" : "/week",
-                copy: "12 meals, crowd favorites",
-                icon: Wheat,
-              },
+              ...(menuFilter === "mixed" ? [
+                {
+                  title: "Mixed 6-Pack",
+                  meals: 6,
+                  price: "$70",
+                  unit: "/week",
+                  copy: "6 meals per week, mixed dishes",
+                  icon: Leaf,
+                },
+                {
+                  title: "Mixed 12-Pack",
+                  meals: 12,
+                  price: "$130",
+                  unit: "/week",
+                  copy: "12 meals per week, mixed dishes",
+                  icon: Wheat,
+                },
+              ] : menuFilter === "non-veg" ? [
+                {
+                  title: "Non-Veg 6-Pack",
+                  meals: 6,
+                  price: "$90",
+                  unit: "/week",
+                  copy: "6 meals per week, protein-rich non-veg",
+                  icon: Dumbbell,
+                },
+                {
+                  title: "Non-Veg 12-Pack",
+                  meals: 12,
+                  price: "$170",
+                  unit: "/week",
+                  copy: "12 meals per week, protein-rich non-veg",
+                  icon: Wheat,
+                },
+              ] : [
+                {
+                  title: "Veg 6-Pack",
+                  meals: 6,
+                  price: "$53",
+                  unit: "/week",
+                  copy: "6 meals per week, fresh vegetables",
+                  icon: Leaf,
+                },
+                {
+                  title: "Veg 12-Pack",
+                  meals: 12,
+                  price: "$90",
+                  unit: "/week",
+                  copy: "12 meals per week, fresh vegetables",
+                  icon: Wheat,
+                },
+              ]),
             ].map((plan) => (
               <Card key={plan.title} className="relative overflow-hidden p-6">
                 <div className="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[#FF4D00]/20 blur-3xl" />
