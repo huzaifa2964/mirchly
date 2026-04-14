@@ -303,6 +303,7 @@ export function MirchlyHome() {
   const [isDraggingMeals, setIsDraggingMeals] = useState(false);
   const [isMealsHovered, setIsMealsHovered] = useState(false);
   const [menuFilter, setMenuFilter] = useState<"mixed" | "veg" | "non-veg">("mixed");
+  const [billingMonthly, setBillingMonthly] = useState(false);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   const carouselRef = useRef<HTMLDivElement | null>(null);
@@ -699,15 +700,45 @@ export function MirchlyHome() {
 
         <section id="pricing" className="mt-24 rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.05] to-white/[0.02] p-6 sm:p-8">
 
-          <div className="flex flex-wrap items-center justify-between gap-6">
-            <div>
-              <h2 className="mt-4 font-display text-4xl text-white">Choose Your Plan</h2>
-              <p className="mt-2 max-w-xl text-white/65">Select from our {menuFilter === "mixed" ? "Mixed" : menuFilter === "non-veg" ? "Non-Veg" : "Veg"} category. Pick your preferred weekly meal count.</p>
+          <div className="space-y-6">
+            <div className="flex flex-col gap-6">
+              <div>
+                <h2 className="mt-4 font-display text-4xl text-white">Choose Your Plan</h2>
+                <p className="mt-2 max-w-xl text-white/65">Select your meal category and billing preference</p>
+              </div>
+
+              {/* Category Filter Buttons */}
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { label: "Mixed", value: "mixed" as const },
+                  { label: "Non-Veg", value: "non-veg" as const },
+                  { label: "Veg", value: "veg" as const },
+                ].map((option) => (
+                  <button
+                    key={option.value}
+                    onClick={() => setMenuFilter(option.value)}
+                    className={`px-6 py-2 rounded-full font-medium transition ${
+                      menuFilter === option.value
+                        ? "bg-[#FF4D00] text-white"
+                        : "bg-white/10 text-white/70 hover:bg-white/20"
+                    }`}
+                  >
+                    {option.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Weekly/Monthly Toggle */}
+              <div className="flex items-center gap-3 rounded-full border border-white/10 bg-black/35 px-4 py-3 w-fit">
+                <span className={`text-sm transition ${billingMonthly ? "text-white/60" : "text-white"}`}>Weekly</span>
+                <Switch checked={billingMonthly} onCheckedChange={setBillingMonthly} />
+                <span className={`text-sm transition ${billingMonthly ? "text-white" : "text-white/60"}`}>Monthly</span>
+              </div>
             </div>
           </div>
 
           <motion.div
-            key={menuFilter}
+            key={`${menuFilter}-${billingMonthly}`}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35 }}
@@ -718,16 +749,16 @@ export function MirchlyHome() {
                 {
                   title: "Mixed 6-Pack",
                   meals: 6,
-                  price: "$70",
-                  unit: "/week",
+                  priceWeekly: "$70",
+                  priceMonthly: "$280",
                   copy: "Frozen, readily available at your home for a whole week with best quality",
                   icon: Leaf,
                 },
                 {
                   title: "Mixed 12-Pack",
                   meals: 12,
-                  price: "$130",
-                  unit: "/week",
+                  priceWeekly: "$130",
+                  priceMonthly: "$520",
                   copy: "Two times a day, frozen meals available at your doorstep so you don't have to worry about your meals anymore",
                   icon: Wheat,
                 },
@@ -735,16 +766,16 @@ export function MirchlyHome() {
                 {
                   title: "Non-Veg 6-Pack",
                   meals: 6,
-                  price: "$90",
-                  unit: "/week",
+                  priceWeekly: "$90",
+                  priceMonthly: "$360",
                   copy: "Frozen, readily available at your home for a whole week with best quality",
                   icon: Dumbbell,
                 },
                 {
                   title: "Non-Veg 12-Pack",
                   meals: 12,
-                  price: "$170",
-                  unit: "/week",
+                  priceWeekly: "$170",
+                  priceMonthly: "$680",
                   copy: "Two times a day, frozen meals available at your doorstep so you don't have to worry about your meals anymore",
                   icon: Wheat,
                 },
@@ -752,16 +783,16 @@ export function MirchlyHome() {
                 {
                   title: "Veg 6-Pack",
                   meals: 6,
-                  price: "$53",
-                  unit: "/week",
+                  priceWeekly: "$53",
+                  priceMonthly: "$212",
                   copy: "Frozen, readily available at your home for a whole week with best quality",
                   icon: Leaf,
                 },
                 {
                   title: "Veg 12-Pack",
                   meals: 12,
-                  price: "$90",
-                  unit: "/week",
+                  priceWeekly: "$90",
+                  priceMonthly: "$360",
                   copy: "Two times a day, frozen meals available at your doorstep so you don't have to worry about your meals anymore",
                   icon: Wheat,
                 },
@@ -772,8 +803,8 @@ export function MirchlyHome() {
                 <plan.icon className="h-5 w-5 text-[#FFD700]" />
                 <h3 className="mt-4 font-display text-3xl text-white">{plan.title}</h3>
                 <p className="mt-3 text-5xl font-semibold tracking-tight text-white">
-                  {plan.price}
-                  <span className="ml-1 text-base font-normal text-white/60">{plan.unit}</span>
+                  {billingMonthly ? plan.priceMonthly : plan.priceWeekly}
+                  <span className="ml-1 text-base font-normal text-white/60">{billingMonthly ? "/month" : "/week"}</span>
                 </p>
                 <p className="mt-3 text-white/65">{plan.copy}</p>
                 <Button className="mt-6 w-full">Select Plan</Button>
