@@ -95,14 +95,14 @@ const meals: Meal[] = [
     ingredients: ["Cauliflower", "Carrot", "Peas", "Beans", "Tomato Gravy"],
   },
   {
-    name: "Pakora Curry w Boiled Rice",
-    subtitle: "Soft pakoras in yogurt curry paired with steamed boiled rice",
+    name: "Pakora",
+    subtitle: "Soft pakoras in rich curry with authentic desi flavor",
     dishType: "mixed",
     spice: "Medium",
     protein: 12,
     carbs: 39,
     fats: 12,
-    image: "/dishes/pakora-curry-rice.jpg",
+    image: "/dishes/pakora curry.jpg",
     ingredients: ["Besan Pakora", "Yogurt", "Turmeric", "Curry Leaves", "Rice"],
   },
   {
@@ -161,14 +161,14 @@ const meals: Meal[] = [
     ingredients: ["Minced Chicken", "Onion", "Peas", "Cumin", "Black Pepper"],
   },
   {
-    name: "Chicken Haleem",
-    subtitle: "Silky slow-cooked haleem with chicken, wheat, and lentils",
+    name: "Haleem",
+    subtitle: "Silky slow-cooked haleem with wheat and lentils",
     dishType: "non-veg",
     spice: "Mild",
     protein: 29,
     carbs: 28,
     fats: 11,
-    image: "/dishes/chicken-haleem.jpg",
+    image: "/dishes/Instant pot Haleem.jpg",
     ingredients: ["Chicken", "Wheat", "Lentils", "Fried Onion", "Garam Masala"],
   },
   {
@@ -183,14 +183,14 @@ const meals: Meal[] = [
     ingredients: ["Masoor Daal", "Steamed Rice", "Garlic", "Cumin", "Ghee"],
   },
   {
-    name: "Cholay",
-    subtitle: "Robust chickpeas in authentic Punjabi-style cholay masala",
+    name: "Chole",
+    subtitle: "Robust chickpeas in authentic Punjabi-style chole masala",
     dishType: "veg",
     spice: "Medium",
     protein: 14,
     carbs: 33,
     fats: 9,
-    image: "/dishes/cholay.jpg",
+    image: "/dishes/Chole.jpg",
     ingredients: ["Chickpeas", "Onion", "Tomato", "Tea Masala", "Coriander"],
   },
   {
@@ -234,7 +234,7 @@ const meals: Meal[] = [
     protein: 7,
     carbs: 43,
     fats: 6,
-    image: "/dishes/pulao.jpg",
+    image: "/dishes/Veg pulao.jpg",
     ingredients: ["Basmati Rice", "Peas", "Whole Spices", "Onion", "Mint"],
   },
 ];
@@ -391,7 +391,9 @@ export function MirchlyHome() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button size="sm" className="hidden sm:inline-flex">Subscribe</Button>
+            <Button asChild size="sm" className="hidden sm:inline-flex">
+              <a href="tel:+16469576958">Subscribe</a>
+            </Button>
             <button
               type="button"
               aria-label="Open mobile menu"
@@ -415,7 +417,9 @@ export function MirchlyHome() {
                 <a href="#catering" className="rounded-xl px-3 py-2 transition hover:bg-white/10" onClick={() => setMobileMenuOpen(false)}>Catering</a>
                 <a href="#pricing" className="rounded-xl px-3 py-2 transition hover:bg-white/10" onClick={() => setMobileMenuOpen(false)}>Pricing</a>
                 <Link href="/about" className="rounded-xl px-3 py-2 transition hover:bg-white/10" onClick={() => setMobileMenuOpen(false)}>About Us</Link>
-                <Button size="sm" className="mt-2 w-full">Subscribe</Button>
+                <Button asChild size="sm" className="mt-2 w-full">
+                  <a href="tel:+16469576958">Subscribe</a>
+                </Button>
               </div>
             </motion.div>
           )}
@@ -434,10 +438,14 @@ export function MirchlyHome() {
               Direct-to-consumer meals crafted with old-world spice intelligence and modern performance nutrition. Heat in minutes, taste like home.
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Button size="lg">Build Your Box</Button>
-              <Button variant="ghost" size="lg">
-                Explore Menu
-                <ChevronRight className="ml-2 h-4 w-4" />
+              <Button asChild size="lg">
+                <a href="tel:+16469576958">Build Your Box</a>
+              </Button>
+              <Button asChild variant="ghost" size="lg">
+                <a href="tel:+16469576958">
+                  Explore Menu
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </a>
               </Button>
             </div>
           </motion.div>
@@ -475,12 +483,13 @@ export function MirchlyHome() {
             ))}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-black/10" />
             <motion.a
-              href="#pricing"
+              href="tel:+16469576958"
               style={{ x: orderX, y: orderY }}
+              aria-label="Order via call at 646-957-6958"
               className="absolute flex h-[124px] w-[124px] items-center justify-center rounded-full border border-white/30 bg-white/10 px-6 py-6 text-center text-sm font-semibold tracking-[0.14em] text-white backdrop-blur-md transition hover:bg-[#FF4D00]/25 max-sm:right-5 max-sm:bottom-5 max-sm:left-auto max-sm:top-auto"
               transition={{ type: "spring", stiffness: 240, damping: 24 }}
             >
-              ORDER NOW
+              ORDER VIA CALL
             </motion.a>
           </motion.div>
         </section>
@@ -648,7 +657,9 @@ export function MirchlyHome() {
                       </p>
                     </div>
 
-                    <Button className="w-full">Add To My Box</Button>
+                    <Button asChild className="w-full">
+                      <a href="tel:+16469576958">Add To My Box</a>
+                    </Button>
                   </div>
                 </SheetContent>
               </Sheet>
@@ -666,9 +677,11 @@ export function MirchlyHome() {
               </div>
               <div className="flex flex-wrap gap-3">
                 <Button asChild size="lg">
-                  <a href="mailto:events@mirchly.com">Request Catering Proposal</a>
+                  <a href="tel:+16469576958">Request Catering Proposal</a>
                 </Button>
-                <Button variant="ghost" size="lg">Book Tasting Session</Button>
+                <Button asChild variant="ghost" size="lg">
+                  <a href="tel:+16469576958">Book Tasting Session</a>
+                </Button>
               </div>
             </div>
 
@@ -807,7 +820,9 @@ export function MirchlyHome() {
                   <span className="ml-1 text-base font-normal text-white/60">{billingMonthly ? "/month" : "/week"}</span>
                 </p>
                 <p className="mt-3 text-white/65">{plan.copy}</p>
-                <Button className="mt-6 w-full">Select Plan</Button>
+                <Button asChild className="mt-6 w-full">
+                  <a href="tel:+16469576958">Select Plan</a>
+                </Button>
               </Card>
             ))}
           </motion.div>
@@ -838,7 +853,8 @@ export function MirchlyHome() {
             <h4 className="mb-4 text-sm tracking-[0.16em] text-[#FFD700]">Contact</h4>
             <div className="space-y-2 text-sm text-white/75">
               <a href="mailto:hello@mirchly.com" className="block transition hover:text-[#FF4D00]">hello@mirchly.com</a>
-              <a href="tel:+12135551219" className="block transition hover:text-[#FF4D00]">+1 (213) 555-1219</a>
+              <a href="tel:+16469576958" className="block transition hover:text-[#FF4D00]">+1 (646) 957-6958</a>
+              <p>939 Brady Avenue, Bronx, NY 10462</p>
               <p>Mon-Sat, 9:00 AM - 8:00 PM</p>
               <p>Serving: NYC, Chicago, Houston, SF</p>
             </div>
